@@ -59,7 +59,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${fraunces.variable} ${figtree.variable}`}>
       <body className="min-h-dvh">
         {children}
-        <Analytics />
+        {/* The analytics script only exists on Vercel. Elsewhere it would 404 and log a console error. */}
+        {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   );
