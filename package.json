@@ -11,7 +11,8 @@
     "check": "node scripts/check.mjs",
     "images": "node scripts/prepare-images.mjs",
     "og": "node scripts/make-og.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:finder": "node scripts/test-finder.cjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

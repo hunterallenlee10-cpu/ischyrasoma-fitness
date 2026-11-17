@@ -20,7 +20,7 @@ Plan, tokens and checklists for the Ischyra Soma Fitness class booking page. Sou
 - [x] Phase 2: `lib/schedule.ts` (live + snapshot fallback), nav, hero (Next Class card, day strip, spring settle), footer
 - [x] Review 1: fresh subagent scores the hero (design 40, usability 30, creativity 20, content 10). One round of fixes
 - [x] Phase 3: full schedule, day tabs, filters, teacher filter, URL hash
-- [ ] Phase 4: First Class Finder, class guide
+- [x] Phase 4: First Class Finder, class guide
 - [ ] Phase 5: three per class, memberships band, visit, FAQ, final band, mobile sticky bar
 - [ ] Phase 6: launch switch, X-Robots-Tag, title and description, single h1, JSON-LD, robots, sitemap, llms.txt, OG image, favicon, 404, SEO-LAUNCH.md
 - [ ] Phase 6b: Lighthouse on a production build, mobile and desktop, live then demo

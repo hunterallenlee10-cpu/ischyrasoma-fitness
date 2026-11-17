@@ -8,6 +8,8 @@ export type Photo = {
   width: number;
   height: number;
   alt: string;
+  /** CSS object-position when the frame crops the photo. */
+  position?: string;
   /** DRAFT notes for photos that need a release or a name. */
   draft?: string;
 };
@@ -88,6 +90,7 @@ export const classes: ClassInfo[] = [
       width: 1179,
       height: 776,
       alt: "Eshael Johnson lying on the Cadillac with her legs in the springs, in front of the stone accent wall",
+      position: "50% 22%",
     },
   },
   {

@@ -29,6 +29,8 @@ export type Session = {
   timeLabel: string;
   /** "Saturday 9:30 AM" for link text. */
   whenLabel: string;
+  /** "Sat 21 Nov" */
+  dateLabel: string;
 };
 
 export type ScheduleDay = {
@@ -125,6 +127,7 @@ function normalise(raw: RawSession): Session | null {
     weekdayLong,
     timeLabel,
     whenLabel: `${weekdayLong} ${timeLabel}`,
+    dateLabel: `${weekdayShortFmt.format(start)} ${dayNumFmt.format(start)} ${monthFmt.format(start)}`,
   };
 }
 
