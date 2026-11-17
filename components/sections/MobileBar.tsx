@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Mail, MessageSquare, Phone } from "lucide-react";
 import { business, textEnabled } from "@/lib/business";
 
@@ -10,13 +10,17 @@ import { business, textEnabled } from "@/lib/business";
  */
 export function MobileBar() {
   const ref = useRef<HTMLDivElement>(null);
-  const [canText, setCanText] = useState(false);
+  // A text link does nothing on a desktop computer, so it only shows on touch devices.
+  const coarse = useSyncExternalStore(
+    () => () => {},
+    () => window.matchMedia("(pointer: coarse)").matches,
+    () => false,
+  );
+  const canText = textEnabled && coarse;
   // Hidden while the hero's own "Book this class" is on screen, so it never covers it.
   const [heroVisible, setHeroVisible] = useState(true);
 
   useEffect(() => {
-    // A text link does nothing on a desktop computer, so it only shows on touch devices.
-    setCanText(textEnabled && window.matchMedia("(pointer: coarse)").matches);
     const onFocus = (e: FocusEvent) => {
       const bar = ref.current;
       const el = e.target as HTMLElement | null;
@@ -31,7 +35,7 @@ export function MobileBar() {
     if (target) {
       io = new IntersectionObserver(([e]) => setHeroVisible(e.isIntersecting), { rootMargin: "0px 0px -88px 0px" });
       io.observe(target);
-    } else setHeroVisible(false);
+    } else requestAnimationFrame(() => setHeroVisible(false));
     return () => {
       document.removeEventListener("focusin", onFocus);
       io?.disconnect();

@@ -10,7 +10,8 @@ function TimeLabel({ session }: { session: Session }) {
   return (
     <time dateTime={session.startsAt} className="tnum font-display text-[1.625rem] leading-none text-ink">
       {clock}
-      <span className="ml-1 text-[0.9375rem] tracking-wide text-muted">{meridiem}</span>
+      {"\u00a0"}
+      <span className="text-[0.9375rem] tracking-wide text-muted">{meridiem}</span>
     </time>
   );
 }
