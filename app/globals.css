@@ -62,11 +62,14 @@
     text-size-adjust: 100%;
     scroll-padding-top: 5rem;
   }
-  @media (prefers-reduced-motion: no-preference) {
+  /* Phones: keyboard focus scrolls clear of the sticky bottom bar. */
+  @media (max-width: 767px) {
     html {
-      scroll-behavior: smooth;
+      scroll-padding-bottom: 6rem;
     }
   }
+  /* No global smooth scrolling: keyboard focus must land at once, clear of the sticky bars.
+     The schedule controls scroll smoothly on their own, and only when motion is welcome. */
   body {
     background: var(--color-ivory);
     color: var(--color-ink);

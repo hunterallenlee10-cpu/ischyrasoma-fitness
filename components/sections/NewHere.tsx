@@ -4,7 +4,7 @@ import { FirstClassFinder } from "@/components/FirstClassFinder/FirstClassFinder
 export function NewHere({ data }: { data: ScheduleData }) {
   // The next three real times for each class, straight from the schedule data.
   const upcoming: Record<string, Session[]> = {};
-  for (const s of data.all) {
+  for (const s of data.upcoming) {
     const list = (upcoming[s.classKey] ??= []);
     if (list.length < 3) list.push(s);
   }

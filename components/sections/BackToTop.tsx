@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
-/** Appears only after the visitor has scrolled one and a half screens. */
+/** Appears only after the visitor has scrolled one and a half screens. Tablet and desktop only:
+ *  on phones the same control sits inside the bottom bar, so it never floats over content. */
 export function BackToTop() {
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -17,7 +18,7 @@ export function BackToTop() {
       href="#top"
       aria-label="Back to top"
       inert={!show}
-      className={`fixed bottom-24 right-4 z-30 inline-flex size-12 items-center justify-center rounded-full border border-line bg-surface text-teal shadow-bar transition-[opacity,transform] duration-200 hover:border-teal motion-reduce:transition-none md:bottom-6 md:right-6 ${
+      className={`fixed bottom-6 right-6 z-30 hidden size-12 items-center justify-center rounded-full border border-line bg-surface text-teal shadow-bar transition-[opacity,transform] duration-200 hover:border-teal motion-reduce:transition-none md:inline-flex ${
         show ? "opacity-100" : "pointer-events-none translate-y-2 opacity-0"
       }`}
     >

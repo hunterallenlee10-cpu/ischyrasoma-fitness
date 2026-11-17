@@ -25,11 +25,6 @@ export function Memberships() {
               {terms.map((t) => (
                 <th key={t} scope="col" className="px-2 py-4 text-label font-semibold uppercase tracking-[0.14em] text-mist">
                   {t} months
-                  {t === 12 && (
-                    <span className="ml-2 rounded-full border border-mist/60 px-2 py-0.5 text-[0.6875rem] tracking-[0.1em] text-ivory">
-                      Best Value
-                    </span>
-                  )}
                 </th>
               ))}
             </tr>
@@ -39,8 +34,8 @@ export function Memberships() {
               <tr key={m.key} className="block border-b border-ivory/25 py-6 md:table-row md:py-0">
                 <th scope="row" className="block pb-4 pr-6 align-top font-normal md:table-cell md:py-7">
                   <span className="block font-display text-h3 text-ivory">{m.name}</span>
-                  {/* DRAFT: replace with her own one-line description. */}
-                  <span className="mt-1 block text-[0.9375rem] text-mist">{m.description}</span>
+                  {/* DRAFT: her own one-line description shows here once supplied. */}
+                  {m.description && <span className="mt-1 block text-[0.9375rem] text-mist">{m.description}</span>}
                 </th>
                 {m.links.map((l) => {
                   const from = showMembershipPrices ? membershipFromPrices[m.key]?.[l.months] : undefined;
@@ -48,16 +43,21 @@ export function Memberships() {
                     <td key={l.months} className="block py-1 md:table-cell md:px-2 md:py-7 md:align-top">
                       <a
                         href={l.href}
-                        className="group inline-flex min-h-11 w-full items-center justify-between gap-3 rounded-full border border-ivory/30 px-4 py-2 text-[0.9375rem] text-ivory transition-colors hover:border-ivory hover:bg-ivory/10 md:w-auto md:justify-start"
+                        className="group inline-flex min-h-11 w-full items-center justify-between gap-3 whitespace-nowrap rounded-full border border-ivory/30 px-4 py-2 text-[0.9375rem] text-ivory transition-colors hover:border-ivory hover:bg-ivory/10 md:w-auto md:justify-start"
                       >
                         <span>
                           Choose {l.months} months
                           <span className="sr-only"> of {m.name}</span>
-                          {l.months === 12 && <span className="ml-2 text-mist md:hidden">Best Value</span>}
+                          {l.bestValue && <span className="ml-2 text-mist md:sr-only">Best Value</span>}
                           {from !== undefined && <span className="ml-2 text-mist">from ${from}</span>}
                         </span>
                         <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75} />
                       </a>
+                      {l.bestValue && (
+                        <span aria-hidden="true" className="mt-2 hidden pl-4 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-mist md:block">
+                          Best Value
+                        </span>
+                      )}
                     </td>
                   );
                 })}

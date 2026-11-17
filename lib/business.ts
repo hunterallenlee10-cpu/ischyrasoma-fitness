@@ -97,26 +97,27 @@ export const hours: { day: string; schemaDay: string; slots: { opens: string; cl
 export type Membership = {
   key: string;
   name: string;
-  // DRAFT: one-line descriptions are built from the program name only. Replace with her own words.
+  // DRAFT: her own one-line description for each program goes here. Left empty rather than invented.
   description: string;
-  links: { months: 3 | 6 | 12; href: string }[];
+  links: { months: 3 | 6 | 12; href: string; bestValue?: boolean }[];
 };
 
 export const memberships: Membership[] = [
   {
     key: "owner-privates",
     name: "Private Lessons with Studio Owner",
-    description: "One to one lessons with Eshael M. Johnson, M.S.",
+    description: "",
     links: [
       { months: 3, href: "https://momence.com/m/683912" },
       { months: 6, href: "https://momence.com/m/683914" },
-      { months: 12, href: "https://momence.com/m/683916" },
+      // She labels this one Best Value.
+      { months: 12, href: "https://momence.com/m/683916", bestValue: true },
     ],
   },
   {
     key: "teacher-privates",
     name: "Private Lessons with Certified Teacher",
-    description: "One to one lessons with a certified teacher.",
+    description: "",
     links: [
       { months: 3, href: "https://momence.com/m/685358" },
       { months: 6, href: "https://momence.com/m/685362" },
@@ -126,7 +127,7 @@ export const memberships: Membership[] = [
   {
     key: "mat-gyrokinesis",
     name: "Mat & GYROKINESIS® Classes",
-    description: "Group Pilates Mat and Stretch & Flex: GYROKINESIS® classes.",
+    description: "",
     links: [
       { months: 3, href: "https://momence.com/m/685384" },
       { months: 6, href: "https://momence.com/m/685385" },
@@ -136,7 +137,7 @@ export const memberships: Membership[] = [
   {
     key: "apparatus-gyrotonic",
     name: "Apparatus & GYROTONIC® Classes",
-    description: "Group Pilates Apparatus and GYROTONIC® Tower classes.",
+    description: "",
     links: [
       { months: 3, href: "https://momence.com/m/685387" },
       { months: 6, href: "https://momence.com/m/685389" },

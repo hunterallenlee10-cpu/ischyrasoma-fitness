@@ -76,7 +76,7 @@ export function Visit() {
 
           <Image
             src="/images/raw/01-studio-room-wide-BEST.jpg"
-            alt="Inside the studio: reformers, a Wunda chair and a Cadillac on a wood floor under framed mirrors"
+            alt="Inside the studio: reformers, a Cadillac and framed mirrors on a warm wood floor"
             width={1600}
             height={1200}
             sizes="380px"

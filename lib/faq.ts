@@ -6,7 +6,7 @@ import type { ScheduleData, Session } from "@/lib/schedule";
 export type FaqItem = { q: string; a: string; link?: { href: string; label: string } };
 
 function nextOf(data: ScheduleData, key: string): Session | undefined {
-  return data.all.find((s) => s.classKey === key);
+  return data.upcoming.find((s) => s.classKey === key);
 }
 
 function nextLine(s: Session | undefined, name: string, extra: string) {

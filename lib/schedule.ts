@@ -52,6 +52,8 @@ export type ScheduleData = {
   week: ScheduleDay[];
   nextWeek: ScheduleDay[];
   all: Session[];
+  /** Every upcoming session in the feed, past the 14-day window too. Used for "next three times". */
+  upcoming: Session[];
   next: Session | null;
   nextRelative: string;
 };
@@ -188,7 +190,8 @@ export async function getSchedule(): Promise<ScheduleData> {
   }
   const todayKey = dateKeyOf(new Date(now));
   const endKey = addDays(todayKey, 14);
-  all = all.filter((s) => Date.parse(s.startsAt) > now && s.dateKey < endKey);
+  const upcoming = all.filter((s) => Date.parse(s.startsAt) > now);
+  all = upcoming.filter((s) => s.dateKey < endKey);
 
   const week = Array.from({ length: 7 }, (_, i) => buildDay(addDays(todayKey, i), todayKey, all));
   const nextWeek = Array.from({ length: 7 }, (_, i) => buildDay(addDays(todayKey, i + 7), todayKey, all)).filter(
@@ -204,6 +207,7 @@ export async function getSchedule(): Promise<ScheduleData> {
     week,
     nextWeek,
     all,
+    upcoming,
     next,
     nextRelative: next ? relativeWhen(next, todayKey) : "",
   };

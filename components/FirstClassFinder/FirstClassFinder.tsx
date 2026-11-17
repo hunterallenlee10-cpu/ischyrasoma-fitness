@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, LazyMotion, m, useReducedMotion } from "motion/react";
 import { Check } from "lucide-react";
 import type { Session } from "@/lib/schedule";
@@ -91,6 +91,21 @@ export function FirstClassFinder({ upcoming }: { upcoming: Record<string, Sessio
   const main = match ? classByKey(match.main) : undefined;
   const also = match?.also ? classByKey(match.also) : undefined;
   const times = match ? (upcoming[match.main] ?? []).slice(0, 3) : [];
+  const resultRef = useRef<HTMLDivElement>(null);
+  const resultKey = match ? `${match.main}-${experience}` : "";
+
+  // On phones the result opens below the questions. Bring the matched class name into view.
+  useEffect(() => {
+    const el = resultRef.current;
+    if (!resultKey || !el || window.matchMedia("(min-width: 1024px)").matches) return;
+    const id = window.setTimeout(() => {
+      const top = el.getBoundingClientRect().top;
+      if (top < 80 || top > window.innerHeight * 0.6) {
+        el.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+      }
+    }, 60);
+    return () => window.clearTimeout(id);
+  }, [resultKey, reduce]);
 
   return (
     <LazyMotion features={loadFeatures} strict>
@@ -107,7 +122,7 @@ export function FirstClassFinder({ upcoming }: { upcoming: Record<string, Sessio
           <OptionGroup name="goal" step={2} legend="What are you after?" options={goalOptions} value={goal} onChange={setGoal} />
         </div>
 
-        <div className="lg:col-span-7" aria-live="polite" aria-atomic="true">
+        <div ref={resultRef} className="scroll-mt-24 lg:col-span-7" aria-live="polite" aria-atomic="true">
           <AnimatePresence mode="wait" initial={false}>
             {!main ? (
               <m.div
@@ -116,7 +131,7 @@ export function FirstClassFinder({ upcoming }: { upcoming: Record<string, Sessio
                 animate={{ opacity: 1 }}
                 exit={reduce ? undefined : { opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex h-full min-h-48 items-center rounded-[14px] border border-dashed border-line p-6 sm:p-8"
+                className="flex min-h-32 items-center rounded-[14px] border border-dashed border-line p-6 sm:p-8"
               >
                 <p className="measure text-muted">
                   {experience || goal
@@ -126,7 +141,7 @@ export function FirstClassFinder({ upcoming }: { upcoming: Record<string, Sessio
               </m.div>
             ) : (
               <m.article
-                key={`${match?.main}-${experience}`}
+                key={resultKey}
                 aria-label={`Your first class: ${main.name}`}
                 initial={reduce ? false : { opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}

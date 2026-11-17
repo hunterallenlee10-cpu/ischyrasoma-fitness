@@ -24,7 +24,7 @@ Plan, tokens and checklists for the Ischyra Soma Fitness class booking page. Sou
 - [x] Phase 5: three per class, memberships band, visit, FAQ, final band, mobile sticky bar
 - [x] Phase 6: launch switch, X-Robots-Tag, title and description, single h1, JSON-LD, robots, sitemap, llms.txt, OG image, favicon, 404, SEO-LAUNCH.md
 - [x] Phase 6b: Lighthouse on a production build, mobile and desktop, live then demo
-- [ ] Review 2: fresh subagent scores the full page and audits every fact. One round of fixes
+- [x] Review 2: fresh subagent scores the full page and audits every fact. One round of fixes
 - [ ] Phase 7: final review against section 10, commit, ready for GitHub and Vercel
 
 Each phase: dev server, Playwright screenshots at 1440 and 375, fix the three weakest things, `npm run check`, tick, commit.
