@@ -21,3 +21,14 @@ NEXT_PUBLIC_SITE_MODE=live NEXT_PUBLIC_SITE_URL=http://localhost:3000 npm start
 CHROME_PATH=/opt/pw-browsers/chromium npx lighthouse@13 http://localhost:3000/ --chrome-flags="--headless=new --no-sandbox"
 CHROME_PATH=/opt/pw-browsers/chromium npx lighthouse@13 http://localhost:3000/ --preset=desktop --chrome-flags="--headless=new --no-sandbox"
 ```
+
+## Deployed preview on Vercel
+
+https://ischyra-booking-concept.vercel.app, demo mode, Lighthouse 13.6.0 from this container.
+
+| Device | Performance | Accessibility | Best Practices | SEO |
+|---|---|---|---|---|
+| Mobile | 77 on the first (cold) run, then 91 and 94 | 100 | 100 | 69 (only `is-crawlable`, by design) |
+| Desktop | 100 | 100 | 100 | 69 (only `is-crawlable`, by design) |
+
+LCP 0.9 to 1.0 s and CLS 0 on every run. The mobile spread is total blocking time from hydration (300 ms to 1.1 s across runs), with the same JavaScript as the local build.

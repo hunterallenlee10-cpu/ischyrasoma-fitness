@@ -27,7 +27,13 @@ Versions: Next.js 16.4.6, React 19.3.0, TypeScript 5.9.3, Tailwind CSS 4.3.3, mo
 
 The preview deployment stays in demo mode. A live build fails while any DRAFT item remains (see `HANDOFF.md`).
 
-## Deploy the preview on Vercel
+## Live preview
+
+**https://ischyra-booking-concept.vercel.app** (Vercel project `ischyra-booking-concept`, team `leu`). Demo mode: `noindex, nofollow` in the meta tag and the `X-Robots-Tag` header, so it never competes with her real site. Vercel Authentication is off so she can open it without a login.
+
+The production deployment was made from branch `claude/nifty-dirac-6dn41s`. Later pushes to that branch create preview deployments. To update the main address, redeploy to production from the Vercel dashboard or set the project's production branch.
+
+## Deploy the preview on Vercel (from scratch)
 
 1. Import this repository as its own Vercel project.
 2. Name it so the address says concept or preview and never imitates her domain, for example `ischyra-booking-concept`.
