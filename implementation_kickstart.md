@@ -16,7 +16,7 @@ Plan, tokens and checklists for the Ischyra Soma Fitness class booking page. Sou
 
 ## Build order
 
-- [ ] Phase 1: scaffold, tokens, fonts, the check script, palette board. Screenshot and fix
+- [x] Phase 1: scaffold, tokens, fonts, the check script, palette board. Screenshot and fix
 - [ ] Phase 2: `lib/schedule.ts` (live + snapshot fallback), nav, hero (Next Class card, day strip, spring settle), footer
 - [ ] Review 1: fresh subagent scores the hero (design 40, usability 30, creativity 20, content 10). One round of fixes
 - [ ] Phase 3: full schedule, day tabs, filters, teacher filter, URL hash
