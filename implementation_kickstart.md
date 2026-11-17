@@ -25,7 +25,7 @@ Plan, tokens and checklists for the Ischyra Soma Fitness class booking page. Sou
 - [x] Phase 6: launch switch, X-Robots-Tag, title and description, single h1, JSON-LD, robots, sitemap, llms.txt, OG image, favicon, 404, SEO-LAUNCH.md
 - [x] Phase 6b: Lighthouse on a production build, mobile and desktop, live then demo
 - [x] Review 2: fresh subagent scores the full page and audits every fact. One round of fixes
-- [ ] Phase 7: final review against section 10, commit, ready for GitHub and Vercel
+- [x] Phase 7: final review against section 10, commit, ready for GitHub and Vercel
 
 Each phase: dev server, Playwright screenshots at 1440 and 375, fix the three weakest things, `npm run check`, tick, commit.
 
@@ -56,17 +56,17 @@ Measured contrast: ink on bg 12.87, muted on bg 5.70, white on primary 6.49, pri
 
 ## Final review checklist (section 10)
 
-- [ ] First phone screen: real upcoming class, time, teacher, price, spots left, working "Book this class". Spring settle plays once
-- [ ] Every time from the data, Eastern Time. No cancelled classes. Network off shows the snapshot with its note
-- [ ] Every "Book this class" opens the right Momence session. `bookingMode: 'membership'` changes every button
-- [ ] Finder right for all 21 combinations, real next times, mouse, touch and keyboard
-- [ ] 12 membership links, gift card link, consultation link match section 1
-- [ ] Every "Things only this business has" item is on the page
-- [ ] Zero em dashes, zero "--" in copy, zero stock or AI images, zero invented facts, no membership prices, no star ratings
-- [ ] Review placeholder empty and labelled. Every DRAFT item commented
-- [ ] Max 2 fonts, palette tokens only, motion in 2 places, no cursor effects or loading intro
-- [ ] 375px: no overflow, burger works, sticky bar works and never covers focus. Keyboard-only and 200% zoom pass
-- [ ] Demo: `noindex, nofollow` meta and header, concept line. Live: `index, follow`, sitemap, no concept line
-- [ ] OG image and favicon are hers
-- [ ] Lighthouse SEO 100 live (mobile and desktop), other three 90+. Demo: only the indexing audit fails
-- [ ] One h1 with "Pilates" and "Gambrills, MD". Meaningful link and image text. JSON-LD validates, claims nothing untrue
+- [x] First phone screen: real upcoming class, time, teacher, price, spots left, working "Book this class". Spring settle plays once
+- [x] Every time from the data, Eastern Time. No cancelled classes. Network off shows the snapshot with its note
+- [x] Every "Book this class" opens the right Momence session. `bookingMode: 'membership'` changes every button
+- [x] Finder right for all 21 combinations, real next times, mouse, touch and keyboard
+- [x] 12 membership links, gift card link, consultation link match section 1
+- [x] Every "Things only this business has" item is on the page
+- [x] Zero em dashes, zero "--" in copy, zero stock or AI images, zero invented facts, no membership prices, no star ratings
+- [x] Review placeholder empty and labelled. Every DRAFT item commented
+- [x] Max 2 fonts, palette tokens only, motion in 2 places, no cursor effects or loading intro
+- [x] 375px: no overflow, burger works, sticky bar works and never covers focus. Keyboard-only and 200% zoom pass
+- [x] Demo: `noindex, nofollow` meta and header, concept line. Live: `index, follow`, sitemap, no concept line
+- [x] OG image and favicon are hers
+- [x] Lighthouse SEO 100 live (mobile and desktop), other three 90+. Demo: only the indexing audit fails
+- [x] One h1 with "Pilates" and "Gambrills, MD". Meaningful link and image text. JSON-LD validates, claims nothing untrue

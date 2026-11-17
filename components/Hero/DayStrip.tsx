@@ -15,6 +15,8 @@ export type StripDay = { key: string; weekdayShort: string; dayNum: number; week
 export function DayStrip({ days }: { days: StripDay[] }) {
   const reduce = useReducedMotion();
   const [selected, setSelected] = useState(days[0]?.key);
+  // The settle plays once, on load. Later selection changes simply move the tint.
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     const sync = (s: ScheduleState | null) => {
@@ -34,6 +36,7 @@ export function DayStrip({ days }: { days: StripDay[] }) {
           initial={reduce ? false : { x: 24 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          onAnimationComplete={() => setSettled(true)}
         >
           {days.map((d) => {
             const isSel = d.key === selected;
@@ -51,7 +54,7 @@ export function DayStrip({ days }: { days: StripDay[] }) {
                     <m.span
                       aria-hidden="true"
                       className="spring-pill absolute inset-0 rounded-[11px] bg-mist"
-                      initial={reduce ? false : { x: 14 }}
+                      initial={reduce || settled ? false : { x: 14 }}
                       animate={{ x: 0 }}
                       transition={{ type: "spring", duration: 0.6, bounce: 0.35 }}
                     />

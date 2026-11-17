@@ -1,13 +1,13 @@
 # Lighthouse results
 
-Lighthouse 13.6.0, Chromium 1243 headless, against a production build (`npm run build && npm start`), never the dev server. Run on 17 November 2026.
+Lighthouse 13.6.0, Chromium 1243 headless, against a production build (`npm run build && npm start`), never the dev server. Final run on 17 November 2026, after both review rounds.
 
 | Mode | Device | Performance | Accessibility | Best Practices | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|---|
-| Live (`NEXT_PUBLIC_SITE_MODE=live`, local only) | Mobile | 96 | 100 | 100 | 100 | 0.8 s | 0 | 230 ms |
+| Live (`NEXT_PUBLIC_SITE_MODE=live`, local only) | Mobile | 99 | 100 | 100 | 100 | 0.9 s | 0 | 100 ms |
 | Live | Desktop | 100 | 100 | 100 | 100 | 0.7 s | 0 | 0 ms |
-| Demo (deployed preview) | Mobile | 97 | 100 | 100 | 69 | 0.9 s | 0 | 200 ms |
-| Demo | Desktop | 100 | 100 | 100 | 69 | 0.7 s | 0 | 10 ms |
+| Demo (deployed preview) | Mobile | 99 | 100 | 100 | 69 | 0.9 s | 0 | 140 ms |
+| Demo | Desktop | 100 | 100 | 100 | 69 | 0.7 s | 0 | 0 ms |
 
 In demo mode the single failing SEO audit is `is-crawlable` ("Page is blocked from indexing"). That is by design: the preview carries `noindex, nofollow` so it never competes with her real site.
 
