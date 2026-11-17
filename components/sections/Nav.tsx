@@ -55,7 +55,7 @@ export function Nav() {
             <span className="tnum">{business.phone.display}</span>
             <span className="sr-only">, call Ischyra Soma Fitness</span>
           </a>
-          <a href="#schedule" className="btn btn-primary hidden min-h-11 px-5 lg:inline-flex">
+          <a href="#schedule" className="btn btn-quiet hidden min-h-11 border-teal/50 px-5 lg:inline-flex">
             See class times
           </a>
           <MobileMenu links={navLinks} />

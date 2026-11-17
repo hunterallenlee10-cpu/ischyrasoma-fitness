@@ -30,7 +30,7 @@ export function DayStrip({ days }: { days: StripDay[] }) {
     <LazyMotion features={loadFeatures} strict>
       <nav aria-label="Classes by day" className="-mx-4 sm:mx-0">
         <m.ul
-          className="spring-strip no-scrollbar flex gap-2 overflow-x-auto px-4 pb-1 sm:grid sm:grid-cols-7 sm:overflow-visible sm:px-0"
+          className="spring-strip no-scrollbar relative flex gap-2 overflow-x-auto px-4 pb-1 sm:grid sm:grid-cols-7 sm:overflow-visible sm:px-0"
           initial={reduce ? false : { x: 24 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

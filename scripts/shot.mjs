@@ -29,7 +29,7 @@ for (const w of widths) {
   } else {
     await page.screenshot({ path: `${out}-${w}.png`, fullPage: Boolean(opts.full) });
   }
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  const overflow = await page.evaluate((vw) => Math.max(document.documentElement.scrollWidth, window.innerWidth) - vw, w);
   console.log(`${out}-${w}.png`, overflow > 0 ? `OVERFLOW ${overflow}px` : "no overflow");
   await ctx.close();
 }

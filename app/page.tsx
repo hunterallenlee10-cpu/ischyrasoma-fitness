@@ -3,6 +3,7 @@ import { getSchedule } from "@/lib/schedule";
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { Footer } from "@/components/sections/Footer";
+import { ScheduleSection } from "@/components/Schedule/ScheduleSection";
 import { MobileBar } from "@/components/sections/MobileBar";
 
 export default async function Home() {
@@ -15,6 +16,7 @@ export default async function Home() {
       <Nav />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero data={data} />
+        <ScheduleSection data={data} />
       </main>
       <Footer />
       <MobileBar />

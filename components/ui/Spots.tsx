@@ -5,13 +5,13 @@ export function Spots({ remaining, capacity, className = "" }: { remaining: numb
   }
   const showDots = capacity > 0 && capacity <= 4;
   return (
-    <p className={`inline-flex items-center gap-2 font-semibold text-moss ${className}`}>
+    <p className={`inline-flex items-center gap-2 whitespace-nowrap font-semibold text-moss ${className}`}>
       {showDots && (
-        <span className="inline-flex gap-1" aria-hidden="true">
+        <span className="inline-flex gap-1.5" aria-hidden="true">
           {Array.from({ length: capacity }, (_, i) => (
             <span
               key={i}
-              className={`size-2 rounded-full ${i < capacity - remaining ? "bg-line" : "bg-moss"}`}
+              className={`size-2.5 rounded-full ${i < capacity - remaining ? "bg-line" : "bg-moss"}`}
             />
           ))}
         </span>

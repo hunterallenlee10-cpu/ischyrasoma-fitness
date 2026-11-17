@@ -22,12 +22,12 @@ export function Hero({ data }: { data: ScheduleData }) {
   ];
 
   return (
-    <section id="top" aria-labelledby="page-title" className="pb-16 pt-6 sm:pt-10 lg:pb-24 lg:pt-14">
+    <section id="top" aria-labelledby="page-title" className="pb-16 pt-5 sm:pt-10 lg:pb-24 lg:pt-14">
       <div className="wrap grid grid-cols-[minmax(0,1fr)] gap-x-14 lg:grid-cols-12">
         <div className="min-w-0 lg:col-span-7">
           <h1 id="page-title" className="font-display">
             <span className="eyebrow block text-teal">Pilates and GYROTONIC® classes in Gambrills, MD</span>
-            <span className="mt-3 block text-h1 font-medium tracking-[-0.02em] text-ink sm:mt-4">
+            <span className="mt-2 block text-h1 font-medium tracking-[-0.02em] text-ink sm:mt-4">
               This week&rsquo;s classes.
               <span className="block font-normal text-teal">Pick a time.</span>
             </span>
@@ -36,10 +36,10 @@ export function Hero({ data }: { data: ScheduleData }) {
             Small classes at Ischyra Soma Fitness, never more than {business.classSize.inPerson} people in the room.
             Find a time, see who is teaching, and book your spot.
           </p>
-          <div className="mt-5 max-w-[34rem] sm:mt-8">
+          <div className="mt-4 sm:mt-8">
             <NextClassCard session={data.next} when={data.nextRelative} />
           </div>
-          <div className="mt-6 sm:mt-8">
+          <div className="mt-5 sm:mt-6">
             <p className="sr-only">Or pick a day</p>
             <DayStrip days={days} />
           </div>
@@ -55,7 +55,7 @@ export function Hero({ data }: { data: ScheduleData }) {
           </ul>
         </div>
         <figure className="relative hidden lg:col-span-5 lg:block">
-          <div className="sticky top-28 overflow-hidden rounded-[14px] border border-line">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[14px] border border-line">
             <Image
               src="/images/raw/01-studio-room-wide-BEST.jpg"
               alt="The studio in Gambrills: reformers, a Cadillac and framed mirrors on a warm wood floor in daylight"
@@ -64,7 +64,7 @@ export function Hero({ data }: { data: ScheduleData }) {
               sizes="(min-width: 1216px) 460px, 38vw"
               priority
               quality={75}
-              className="aspect-[4/5] h-auto w-full object-cover object-[38%_50%]"
+              className="absolute inset-0 h-full w-full object-cover object-[38%_50%]"
             />
           </div>
           <figcaption className="mt-3 text-label text-muted">
