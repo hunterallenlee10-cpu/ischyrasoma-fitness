@@ -5,7 +5,12 @@ Every item below is marked `// DRAFT` (or `TODO: swap`) in the code. In live mod
 ## Decisions
 
 1. **Single classes or membership first.** "Book this class" currently opens the Momence session for that class (`bookingMode: 'session'` in `lib/business.ts`). Her current page sends every visitor to memberships first. One switch flips every button to "See membership options".
-2. **The schedule feed.** The page reads the public feed her own Momence schedule widget uses. Confirm with Momence the supported way to read it (their official embed or API), and confirm she is happy for single classes to be bookable from this page.
+2. **The schedule feed.** Researched 17 November 2026:
+   - **Today:** the page reads `readonly-api.momence.com/host-plugins/host/37215/host-schedule/sessions`. That is the same feed Momence's own official Schedule plugin (`momence.com/plugin/host-schedule/host-schedule.js`, installed from Studio Setup > Add to Website) calls. It needs no keys or login. It is not in Momence's public API docs, so it could change without notice. The saved snapshot covers that case.
+   - **Documented alternative:** Momence Public API v2 (api.docs.momence.com). She creates a client in Dashboard > Apps & Integrations > Developer API, which is self-serve. `GET /api/v2/host/sessions` returns name, start, duration, capacity, bookingCount, teacher, isCancelled and isInPerson, so spots left come out exact. It needs a staff login (OAuth password grant) and tokens that refresh every few hours. Prices would come from `lib/classes.ts`, because the host session data has no price. Switching is contained to `lib/schedule.ts`.
+   - **Optional:** Momence webhooks (`session.booked` and others) can refresh spots the moment someone books. They are experimental and support has to switch them on.
+   - **Optional:** Momence documents embedding its checkout page in an iframe, so booking could happen without leaving her page.
+   - **Booking stays on Momence** in every option: each button opens `momence.com/s/<session id>`.
 3. **Texting.** A text link is built and switched off (`textEnabled: false`). Turn it on once she confirms 703.528.2821 takes texts.
 
 ## Facts to confirm

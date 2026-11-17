@@ -3,8 +3,10 @@ import snapshot from "@/data/schedule-snapshot.json";
 import { business, teacherBySlugOrName, slugify } from "@/lib/business";
 import { classForDataName } from "@/lib/classes";
 
-// DRAFT: before launch, confirm with Momence the supported way to read the schedule (their official
-// embed or API), and confirm Eshael is happy for single classes to be bookable from this page.
+// This is the feed Momence's own Schedule plugin (momence.com/plugin/host-schedule) reads. It is not in
+// their public API docs. The documented alternative is GET /api/v2/host/sessions (see HANDOFF.md item 2).
+// DRAFT: before launch, confirm with Momence which they prefer, and confirm Eshael is happy for single
+// classes to be bookable from this page.
 const FEED_URL = `https://readonly-api.momence.com/host-plugins/host/${business.momence.hostId}/host-schedule/sessions?pageSize=100&page=0`;
 const TZ = "America/New_York";
 const DAY_MS = 86_400_000;
