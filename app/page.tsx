@@ -14,14 +14,18 @@ import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { BackToTop } from "@/components/sections/BackToTop";
 import { buildFaq } from "@/lib/faq";
+import { buildJsonLd } from "@/lib/jsonld";
 
 export default async function Home() {
   // Render per request so "Today" and the next class are always right. The feed fetch itself is cached for 15 minutes.
   await connection();
   const data = await getSchedule();
+  const faq = buildFaq(data);
+  const jsonLd = JSON.stringify(buildJsonLd(faq)).replace(/</g, "\\u003c");
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <Nav />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero data={data} />
@@ -31,7 +35,7 @@ export default async function Home() {
         <ThreePerClass />
         <Memberships />
         <Visit />
-        <Faq items={buildFaq(data)} />
+        <Faq items={faq} />
         <FinalCta />
       </main>
       <Footer />
