@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   // Per-request rendering with a cached feed fetch keeps "Today" honest. See implementation_kickstart.md.
   cacheComponents: false,
   poweredByHeader: false,
+  devIndicators: false,
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [70, 75, 85],

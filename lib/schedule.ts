@@ -103,7 +103,8 @@ function normalise(raw: RawSession): Session | null {
   const capacity = raw.capacity ?? raw.remainingSpots?.total ?? 0;
   const remaining = Math.max(0, raw.remainingSpots?.remaining ?? raw.remaining ?? 0);
   const price = raw.fixedTicketPrice ?? raw.price ?? info?.price ?? 0;
-  const timeLabel = timeFmt.format(start);
+  // Keep "6:00 PM" together on one line.
+  const timeLabel = timeFmt.format(start).replace(/\s/g, "\u00a0");
   const weekdayLong = weekdayLongFmt.format(start);
   return {
     id: String(raw.id),

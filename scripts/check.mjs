@@ -32,7 +32,7 @@ const tf = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour
 const allowed = new Map();
 for (const s of [...snapshot, ...live]) {
   if (s.isCancelled) continue;
-  allowed.set(String(s.id), tf.format(new Date(s.startsAt)));
+  allowed.set(String(s.id), tf.format(new Date(s.startsAt)).replace(/\s/g, " "));
 }
 const cancelledIds = new Set(live.filter((s) => s.isCancelled).map((s) => String(s.id)));
 const allowedTimes = new Set(allowed.values());
@@ -146,9 +146,9 @@ const timeBad = [];
 for (const s of dom.sessionTimes) {
   if (cancelledIds.has(s.id)) timeBad.push(`cancelled session ${s.id}`);
   else if (!allowed.has(s.id)) timeBad.push(`unknown session ${s.id}`);
-  else if (allowed.get(s.id) !== s.time) timeBad.push(`session ${s.id} shows ${s.time}, data says ${allowed.get(s.id)}`);
+  else if (allowed.get(s.id) !== s.time.replace(/\s/g, " ")) timeBad.push(`session ${s.id} shows ${s.time}, data says ${allowed.get(s.id)}`);
 }
-for (const t of dom.text.match(/\b\d{1,2}:\d{2}\s?[AP]M\b/g) || []) if (!allowedTimes.has(t.replace(/\s+/, " "))) timeBad.push(`time "${t}" not in data`);
+for (const t of dom.text.match(/\b\d{1,2}:\d{2}\s?[AP]M\b/g) || []) if (!allowedTimes.has(t.replace(/\s+/g, " "))) timeBad.push(`time "${t}" not in data`);
 for (const l of dom.links) {
   const m = l.href?.match(/momence\.com\/s\/(\d+)/);
   if (m && !allowed.has(m[1])) timeBad.push(`booking link to unknown session ${m[1]}`);
