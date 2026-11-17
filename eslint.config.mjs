@@ -7,7 +7,7 @@ const eslintConfig = defineConfig([
   ...nextTs,
   {
     files: ["scripts/**"],
-    rules: { "@typescript-eslint/no-unused-expressions": "off" },
+    rules: { "@typescript-eslint/no-unused-expressions": "off", "@typescript-eslint/no-require-imports": "off" },
   },
   // Override default ignores of eslint-config-next.
   globalIgnores([

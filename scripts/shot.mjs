@@ -4,7 +4,12 @@ import { createRequire } from "node:module";
 const { chromium } = createRequire(import.meta.url)("playwright");
 
 const [url, out, ...rest] = process.argv.slice(2);
-const opts = Object.fromEntries(rest.map((a) => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
+const opts = Object.fromEntries(
+  rest.map((a) => {
+    const [k, ...v] = a.replace(/^--/, "").split("=");
+    return [k, v.length ? v.join("=") : true];
+  }),
+);
 const widths = String(opts.widths ?? "1440,375").split(",").map(Number);
 const scale = Number(opts.scale ?? 1);
 

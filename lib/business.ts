@@ -26,6 +26,7 @@ export const business = {
     name: "Eshael M. Johnson, M.S.",
     firstName: "Eshael",
     roles: "Classically trained Pilates instructor, GYROTONIC® teacher and GYROKINESIS® trainer",
+    rolesInline: "classically trained Pilates instructor, GYROTONIC® teacher and GYROKINESIS® trainer",
     history: "She started Pilates in 2009, began her comprehensive certification in 2017 and added the GYROTONIC® method in 2021. She also holds a Buff Bones® certification.",
   },
   address: {

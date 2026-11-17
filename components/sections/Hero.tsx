@@ -26,9 +26,9 @@ export function Hero({ data }: { data: ScheduleData }) {
       <div className="wrap grid grid-cols-[minmax(0,1fr)] gap-x-14 lg:grid-cols-12">
         <div className="min-w-0 lg:col-span-7">
           <h1 id="page-title" className="font-display">
-            <span className="eyebrow block text-teal">Pilates and GYROTONIC® classes in Gambrills, MD</span>
+            <span className="eyebrow block text-teal">Pilates and GYROTONIC® classes in Gambrills, MD</span>{" "}
             <span className="mt-2 block text-h1 font-medium tracking-[-0.02em] text-ink sm:mt-4">
-              This week&rsquo;s classes.
+              This week&rsquo;s classes.{" "}
               <span className="block font-normal text-teal">Pick a time.</span>
             </span>
           </h1>
